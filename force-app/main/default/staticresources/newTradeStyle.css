@@ -1,0 +1,29 @@
+.slds-modal__content {
+    overflow: initial;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.rateDiv {
+    pointer-events: none;
+}
+
+.slds-input_faux {
+    text-align: center;
+    display: block;
+    border-radius: 0%;
+}
+
+.slds-input {
+    text-align: center;
+    border-radius: 0%;
+}
+
+.tradeTitle {
+    text-align: left;
+}
+.errorText{
+    color: var(--lwc-colorTextError);
+}

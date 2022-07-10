@@ -1,0 +1,70 @@
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate tradeTitle">{label.newTradeTitle}</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning-record-edit-form object-api-name={objectApiName} density="auto" onsuccess={handleSuccess}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-3 textCenter">
+                            <lightning-input-field field-name={fieldNames.SELLCCY_FIELD} value={sellCurrency}
+                                onchange={handleChangeSelCur} required="true" class="inpCurrency">
+                            </lightning-input-field>
+                            <template if:true={errorSameCurrency}>
+                                <lightning-formatted-text value={label.errorCurrency}
+                                    class="errorText slds-form-element__help ">
+                                </lightning-formatted-text>
+                            </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 textCenter rateDiv">
+                            <lightning-input-field field-name={fieldNames.RATE_FIELD} readonly="true" value={rate}>
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 textCenter">
+                            <lightning-input-field field-name={fieldNames.BUYCCY_FIELD} value={buyCurrency}
+                                required="true" onchange={handleChangeBuyCur} class="inpCurrency">
+                            </lightning-input-field>
+                            <template if:true={errorSameCurrency}>
+                                <lightning-formatted-text value={label.errorCurrency}
+                                    class="errorText slds-form-element__help ">
+                                </lightning-formatted-text>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-3 textCenter">
+                            <lightning-input-field field-name={fieldNames.SELLAMT_FIELD} value={sellAmount}
+                                onchange={handleChangeSellAmount} class="inpSellAmount">
+                            </lightning-input-field>
+                            <template if:true={errorAmount}>
+                                <lightning-formatted-text value={label.errorAmount}
+                                    class="errorText slds-form-element__help "></lightning-formatted-text>
+                            </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 textCenter">
+                            <lightning-input-field field-name={fieldNames.BUYAMT_FIELD} disabled="true" readonly="true"
+                                value={buyAmount}></lightning-input-field>
+                        </div>
+                    </div>
+                </lightning-record-edit-form>
+            </div>
+            <div class="slds-modal__footer">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-button type="submit" disabled={disableCreate} label={label.NewTradeCreate} variant="neutral" onclick={handleCreate}
+                            class="slds-float_left"></lightning-button>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-button type="button" label={label.NewTradeCancel} variant="neutral" onclick={handleCancel}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
