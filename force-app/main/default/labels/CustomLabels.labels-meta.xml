@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>fixerApiKey</fullName>
+        <categories>Fixer Webservice</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Fixer Api Key</shortDescription>
+        <value>Vsyg4YXLhWYJhPoGRAgvndKyNx6pdLmd</value>
+    </labels>
+    <labels>
+        <fullName>fixerEndpoint</fullName>
+        <categories>Fixer Webservice</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Fixer Endpoint</shortDescription>
+        <value>https://api.apilayer.com/fixer/latest?symbols={symbols}&amp;base={base}</value>
+    </labels>
+    <labels>
+        <fullName>BookedTradesColumns</fullName>
+        <categories>Booked Trades LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BookedTradesColumns</shortDescription>
+        <value>SellCurrency__c,SellAmount__c,BuyCurrency__c,BuyAmount__c,Rate__c,CreatedDate</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeErrorAmount</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade Error Amount</shortDescription>
+        <value>Amount should be higher than 0.</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeErrorCurrency</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NewTradeErrorCurrency</shortDescription>
+        <value>Don&apos;t select the same currency.</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeTitle</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade Title</shortDescription>
+        <value>New Trade</value>
+    </labels>
+    <labels>
+        <fullName>BookedTradesTitle</fullName>
+        <categories>Booked Trades LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Booked Trades Title</shortDescription>
+        <value>Booked Trades</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeSuccessMessage</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade Success Message</shortDescription>
+        <value>A new trade was created.</value>
+    </labels>
+    <labels>
+        <fullName>BookedTradesErrorCols</fullName>
+        <categories>Booked Trades LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BookedTradesErrorCols</shortDescription>
+        <value>Error getting columns</value>
+    </labels>
+    <labels>
+        <fullName>BookedTradesErrorTrades</fullName>
+        <categories>Booked Trades LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Booked Trades Error Trades</shortDescription>
+        <value>Error getting trades</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeErrorCreate</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade Error Create</shortDescription>
+        <value>Error creating new trade</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeErrorRate</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NewTradeErrorRate</shortDescription>
+        <value>Error getting rate</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeSuccess</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NewTradeSuccess</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeCancel</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>NewTradeCreate</fullName>
+        <categories>New Trade LWC</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Trade Create</shortDescription>
+        <value>Create</value>
+    </labels>
+</CustomLabels>

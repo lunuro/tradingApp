@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customLabels>
+        <label><!-- BookedTradesColumns --></label>
+        <name>BookedTradesColumns</name>
+    </customLabels>
+    <customLabels>
+        <label>Error al obtener columnas</label>
+        <name>BookedTradesErrorCols</name>
+    </customLabels>
+    <customLabels>
+        <label>Error al obtener cambios</label>
+        <name>BookedTradesErrorTrades</name>
+    </customLabels>
+    <customLabels>
+        <label>Cambios Reservados</label>
+        <name>BookedTradesTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Cancelar</label>
+        <name>NewTradeCancel</name>
+    </customLabels>
+    <customLabels>
+        <label>Crear</label>
+        <name>NewTradeCreate</name>
+    </customLabels>
+    <customLabels>
+        <label>La cantidad debe ser mayor que 0.</label>
+        <name>NewTradeErrorAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Error al crear nuevo cambio</label>
+        <name>NewTradeErrorCreate</name>
+    </customLabels>
+    <customLabels>
+        <label>No seleccione la misma divisa.</label>
+        <name>NewTradeErrorCurrency</name>
+    </customLabels>
+    <customLabels>
+        <label>Error al obtener la tasa</label>
+        <name>NewTradeErrorRate</name>
+    </customLabels>
+    <customLabels>
+        <label>Éxito</label>
+        <name>NewTradeSuccess</name>
+    </customLabels>
+    <customLabels>
+        <label>Se ha registrado un nuevo cambio.</label>
+        <name>NewTradeSuccessMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>Nuevo Cambio</label>
+        <name>NewTradeTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Fixer Api Key --></label>
+        <name>fixerApiKey</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Fixer Endpoint --></label>
+        <name>fixerEndpoint</name>
+    </customLabels>
+    <customTabs>
+        <label>Cambios</label>
+        <name>BookedTrades</name>
+    </customTabs>
+</Translations>
