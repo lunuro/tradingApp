@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>SellCurrency__c</columns>
+    <columns>SellAmount__c</columns>
+    <columns>BuyCurrency__c</columns>
+    <columns>BuyAmount__c</columns>
+    <columns>Rate__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>Booked Trades</label>
+</ListView>
