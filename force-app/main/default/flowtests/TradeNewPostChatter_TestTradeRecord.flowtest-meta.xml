@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>TradeNewPostChatter</flowApiName>
+    <label>Test Trade Record</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;BuyAmount__c&quot;:116.75,&quot;BuyCurrency__c&quot;:&quot;USD&quot;,&quot;CurrencyIsoCode&quot;:&quot;EUR&quot;,&quot;OwnerId&quot;:&quot;0057R00000BtCxQQAV&quot;,&quot;Rate__c&quot;:1.0518,&quot;SellAmount__c&quot;:111,&quot;SellCurrency__c&quot;:&quot;EUR&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>CreateChatterPosts</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <errorMessage>Chatter Post after trade record not created</errorMessage>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+    </testPoints>
+</FlowTest>

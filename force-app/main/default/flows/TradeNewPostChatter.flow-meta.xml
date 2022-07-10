@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <description>Generate chatter post to each user and add it to the list.</description>
+        <name>AssignChatterPost</name>
+        <label>Assign Chatter Post</label>
+        <locationX>264</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>ChatterPost.Body</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>newTradeMessageText</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ChatterPost.IsRichText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ChatterPost.ParentId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>LoopQueueMembers.UserOrGroupId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>chatterPostList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>ChatterPost</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopQueueMembers</targetReference>
+        </connector>
+    </assignments>
+    <description>Notify via chatter that a new trade was created.</description>
+    <formulas>
+        <name>formulaDomain</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Enterprise_Server_URL_540},FIND(&quot;/services&quot;, {!$Api.Enterprise_Server_URL_540}))</expression>
+    </formulas>
+    <interviewLabel>TradeNewPostChatter {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Trade New Post Chatter</label>
+    <loops>
+        <name>LoopQueueMembers</name>
+        <label>Loop Queue Members</label>
+        <locationX>176</locationX>
+        <locationY>575</locationY>
+        <collectionReference>GetTradeQueueMembers</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignChatterPost</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>CreateChatterPosts</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>CreateChatterPosts</name>
+        <label>Create Chatter Posts</label>
+        <locationX>176</locationX>
+        <locationY>911</locationY>
+        <inputReference>chatterPostList</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <name>getQueueTrade</name>
+        <label>Get Queue Trade</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetTradeQueueMembers</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Trade reviewers</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetTradeQueueMembers</name>
+        <label>Get Trade Queue Members</label>
+        <locationX>176</locationX>
+        <locationY>455</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>LoopQueueMembers</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>getQueueTrade.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>GroupMember</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>UserOrGroupId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>getQueueTrade</targetReference>
+        </connector>
+        <object>Trade__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Text template that contains new trade chatter post message.</description>
+        <name>newTradeMessageText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;p&gt;A new trade has been created with the following data:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Sell Currency: {!$Record.SellCurrency__c}&lt;/p&gt;
+&lt;p&gt;Sell Amount: {!$Record.SellAmount__c}&lt;/p&gt;
+&lt;p&gt;Buy Currency: {!$Record.BuyCurrency__c}&lt;/p&gt;
+&lt;p&gt;Buy Amount: {!$Record.BuyAmount__c}&lt;/p&gt;
+&lt;p&gt;Rate: {!$Record.Rate__c}&lt;/p&gt;
+&lt;p&gt;Booked Date: {!$Record.CreatedDate}&lt;/p&gt;
+&lt;p&gt;Link to the trade: &lt;a href=&quot;{!formulaDomain}{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; title=&quot;{!$Record.Name}&quot;&gt;{!$Record.Name}&lt;/a&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>ChatterPost</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>FeedItem</objectType>
+    </variables>
+    <variables>
+        <name>chatterPostList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>FeedItem</objectType>
+    </variables>
+</Flow>
