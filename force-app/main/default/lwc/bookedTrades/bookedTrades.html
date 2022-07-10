@@ -1,0 +1,13 @@
+<template>
+    <lightning-card variant="Narrow" title={label.bookedTradesTitle} icon-name="standard:currency">
+        <lightning-button variant="neutral" label={label.newTradeTitle} onclick={handleClick} slot="actions"></lightning-button>
+        <div class="slds-p-around_x-small">
+            <c-new-trade if:true={newClicked} onclosenew={handleCloseNewTrade}></c-new-trade>
+        </div>
+        <div class="slds-p-around_x-small">
+            <lightning-datatable key-field="id" data={dataTrades} hide-checkbox-column columns={columns}
+                sorted-by={sortedField} sorted-direction="desc">
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
