@@ -1,0 +1,17 @@
+{
+  "orgName": "Finance",
+  "edition": "Developer",
+  "features": ["EnableSetPasswordInApi"],
+  "language": "en_US",
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    }
+  }
+}
