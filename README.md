@@ -31,7 +31,6 @@ Salesforce custom app to convert different currencies using live exchange rates 
 ## Roadmap
 
 - Datatable pagination
-- Create form
 - Support more currencies
 - Jest testing
 
